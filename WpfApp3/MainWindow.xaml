@@ -1,0 +1,111 @@
+﻿<Window x:Class="Élelmiszer.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfÉlelmiszer"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="600" Width="1000"
+        AllowsTransparency="True"
+        WindowStyle="None"
+        Background="Transparent">
+    <Border Background="red" CornerRadius="20">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="75"/>
+                <RowDefinition/>
+                <RowDefinition Height="100"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="2*"/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+
+            <TextBlock Text="Élelmsizer nyilvántartás"  
+                   MouseLeftButtonDown="TextBlock_MouseLeftButtonDown"
+                   FontSize="26" 
+                   Padding="0,19"
+                   Margin="0,10"
+                   Foreground="White"
+                   Grid.ColumnSpan="3"
+                   VerticalAlignment="Center"
+                   HorizontalAlignment="Stretch"
+                   TextAlignment="Center"
+                   Background="Green"
+                   />
+
+            <ListBox x:Name="lbAllatok" IsSynchronizedWithCurrentItem="True" Margin="25,0,0,0" Grid.Row="1" FontSize="20">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <Border Background="red" Margin="5">
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="{Binding Name}"/>
+                                <Button Content="+"/>
+                                <Button Content="-"/>
+
+                            </StackPanel>
+                        </Border>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+
+            <StackPanel
+                Grid.Row="1"
+                Grid.Column="1"
+                VerticalAlignment="Center"
+                >
+                <TextBlock Text="Product Name : " 
+                           HorizontalAlignment="Right"
+                           FontSize="22"
+                           Padding="0,10"
+                           Foreground="Black"/>
+                <TextBlock Text="Product : " 
+                           HorizontalAlignment="Right"
+                           FontSize="22"
+                           Padding="0,10"
+                           Foreground="Black"/>
+                <TextBlock Text="Price : " 
+                           HorizontalAlignment="Right"
+                           FontSize="22"
+                           Padding="0,10"
+                           Foreground="black"/>
+
+            </StackPanel>
+            <StackPanel
+            x:Name="spInput"
+            Margin="0,0,25,0"
+                Grid.Row="1"
+                Grid.Column="2"
+                VerticalAlignment="Center"
+                >
+                <TextBox Text="{Binding Name}" 
+                           HorizontalAlignment="Stretch"
+                           FontSize="22"
+                           Padding="0,10"
+                           Foreground="DarkGreen"/>
+                <TextBox Text="{Binding Species}" 
+                           HorizontalAlignment="Stretch"
+                           FontSize="22"
+                           Padding="0,10"
+                           Foreground="DarkGreen"/>
+                <TextBox Text="{ Binding Price}" 
+                           HorizontalAlignment="Stretch"
+                           FontSize="22"
+                           Padding="0,10"
+                           Foreground="DarkGreen"/>
+
+            </StackPanel>
+
+            <StackPanel  Grid.Row="2" Grid.ColumnSpan="3" Orientation="Horizontal"
+                    HorizontalAlignment="Center">
+                <Button x:Name="Add" Click="Add_Click"  Content="Add" Width="150" FontSize="20" Margin="20"/>
+                <Button x:Name="Update" Click="Update_Click" Content="Update" Width="150" FontSize="20" Margin="20"/>
+                <Button x:Name="Delete" Click="Delete_Click" Content="Delete" Width="150" FontSize="20" Margin="20"/>
+                <Button x:Name="CloseButton" Click="CloseButton_Click" Content="Close" Width="150" FontSize="20" Margin="20"/>
+            </StackPanel>
+
+
+        </Grid>
+    </Border>
+</Window>
